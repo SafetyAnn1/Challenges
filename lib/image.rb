@@ -1,7 +1,13 @@
 class Image
 
   def initialize
-    @image = Image.new
   end
 
 end
+
+test_arr = [
+      [0, 0, 1, 0],
+      [0, 0, 0, 0],
+      [0, 1, 0, 1]
+      ]
+

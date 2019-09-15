@@ -16,7 +16,7 @@ describe Image do
       [0, 1, 0, 1]
       ]
 
-    expect image.test_arr == Image.new
+    expect image.test_arr == image
   end
 
 
