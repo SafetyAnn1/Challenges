@@ -1,38 +1,38 @@
 class Image
 
-  def initialize(pixel)
-    @pixel = pixel
+  def initialize(image)
+    @image = image
   end
 
   def output_image
-    @pixel.each do |block|
+    @image.each do |block|
       puts block.join
     end
   end
 
 
-  def blur!
-    array = []
-    @pixel.each_with_index do |rows, row|
+  def blur! #figures out the coordinates of the 1's / finding coords of actual pixels blurred
+    pixel_locations = []
+    @image.each_with_index do |rows, row|
       rows.each_with_index do |num, col|
-        array << [row, col] if num == 1
+        pixel_locations << [row, col] if num == 1 #these coordinates will be pushed if they have a 1
+      end
     end
-  end
 
-    array.each do |row, col|
-      @pixel[row-1][col]=1 if row-1 >= 0
-      @pixel[row+1][col]=1 if row+1 < row_len
-      @pixel[row][col-1]=1 if col-1 >= 0
-      @pixel[row][col+1]=1 if col+1 < col_len
+    pixel_locations.each do |row, col|
+      @image[row-1][col]=1 if row-1 >= 0
+      @image[row+1][col]=1 if row+1 < row_len
+      @image[row][col-1]=1 if col-1 >= 0
+      @image[row][col+1]=1 if col+1 < col_len
     end
   end
 
   def row_len
-    @pixel.length
+    @image.length
   end
 
   def col_len
-    @pixel[0].length
+    @image[0].length
   end
 end
 
